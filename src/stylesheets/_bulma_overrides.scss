@@ -1,0 +1,19 @@
+// Set your brand colors
+@import 'color_palette';
+
+
+
+// Update Bulma's global variables
+// $family-sans-serif: "Nunito", sans-serif;
+// $grey-dark: $brown;
+// $grey-light: $beige-light;
+$primary: $blue;
+$link: $red;
+// $widescreen-enabled: false;
+// $fullhd-enabled: false;
+
+// Update some of Bulma's component variables
+$body-background-color: $blue;
+$control-border-width: 2px;
+// $input-border-color: transparent;
+$input-shadow: none;
