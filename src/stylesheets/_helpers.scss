@@ -18,6 +18,10 @@
   line-height: 1;
 }
 
+.has-background-blue {
+  background-color: rgba(13, 70, 94, 1) !important;
+}
+
 @media (max-width: 1024px) {
   .desktop {
     display: none;
