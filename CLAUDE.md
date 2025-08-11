@@ -6,7 +6,7 @@ code in this repository.
 ## Project Overview
 
 This is an Astro-based static website for Craftbytes, a web and mobile app
-development company. The site uses Astro components with Bulma CSS framework
+development company. The site uses Astro components with Tailwind CSS
 for styling and is currently displaying a "coming soon" page.
 
 ## Commands
@@ -29,27 +29,28 @@ for styling and is currently displaying a "coming soon" page.
 ### Core Technologies
 
 - **Astro 5.x** - Static site generator
-- **Bulma 1.x** - CSS framework
-- **SCSS** - Stylesheet preprocessor
+- **Tailwind CSS 3.x** - Utility-first CSS framework
+- **@astrojs/tailwind** - Astro integration for Tailwind
 
 ### Project Structure
 
 - `src/layouts/` - Astro layout components
 - `src/pages/` - Astro pages (currently index.astro and 404.astro)
-- `src/stylesheets/` - SCSS files with Bulma customizations
+- `src/stylesheets/` - CSS files with Tailwind directives
+- `tailwind.config.mjs` - Tailwind CSS configuration
 - `public/` - Static assets including logos and images
 
 ### Key Components
 
 - `Layout.astro` component handles SEO metadata and page structure
-- Uses Bulma CSS classes throughout (e.g., `hero`, `has-background-primary`, `columns`)
+- Uses Tailwind utility classes for styling (e.g., `min-h-screen`, `bg-blue-600`, `flex`)
 
 ### Styling Architecture
 
-- Global styles in `src/stylesheets/global.scss` import Bulma with custom overrides
-- Custom variables in `_bulma_overrides.scss`
-- Additional helper classes in `_helpers.scss` and `_grid.scss`
-- Styles imported directly in Astro components
+- Global Tailwind directives in `src/stylesheets/global.scss` 
+- Tailwind CSS automatically configured via @astrojs/tailwind integration
+- Content paths configured in `tailwind.config.mjs` for purging
+- Utility-first approach with responsive and state variants
 
 ### Static Assets
 
@@ -79,6 +80,7 @@ Uses pnpm as the package manager. Use `pnpm` instead of `npm` for all commands.
 - **Converted**: React components → Astro components
 - **Moved**: `src/images/` → `public/` for static assets
 - **Replaced**: GraphQL queries → direct imports and props
+- **Styling**: Bulma CSS → Tailwind CSS utility framework
 
 ## Development Guidelines
 
