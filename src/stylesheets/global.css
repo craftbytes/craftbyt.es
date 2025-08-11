@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-craftbytes-blue: #0d465e;
+  --color-craftbytes-blue-light: #1a536b;
+  --color-craftbytes-red: #ff6b6b;
+}
+
+/* Force generation of all utilities we need */
+@layer utilities {
+  .bg-craftbytes-blue {
+    background-color: #0d465e;
+  }
+  .bg-craftbytes-blue-light {
+    background-color: #1a536b;
+  }
+  .text-craftbytes-blue {
+    color: var(--color-craftbytes-blue);
+  }
+  
+  /* Standard Tailwind utilities that might not be generating */
+  .min-h-screen {
+    min-height: 100vh;
+  }
+  .flex {
+    display: flex;
+  }
+  .items-center {
+    align-items: center;
+  }
+  .justify-center {
+    justify-content: center;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .max-w-lg {
+    max-width: 32rem;
+  }
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .block {
+    display: block;
+  }
+}

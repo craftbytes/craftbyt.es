@@ -29,15 +29,14 @@ for styling and is currently displaying a "coming soon" page.
 ### Core Technologies
 
 - **Astro 5.x** - Static site generator
-- **Tailwind CSS 3.x** - Utility-first CSS framework
-- **@astrojs/tailwind** - Astro integration for Tailwind
+- **Tailwind CSS 4.x** - Utility-first CSS framework
+- **@tailwindcss/vite** - Native Vite plugin for Tailwind CSS
 
 ### Project Structure
 
 - `src/layouts/` - Astro layout components
 - `src/pages/` - Astro pages (currently index.astro and 404.astro)
-- `src/stylesheets/` - CSS files with Tailwind directives
-- `tailwind.config.mjs` - Tailwind CSS configuration
+- `src/stylesheets/` - CSS files with Tailwind import and theme configuration
 - `public/` - Static assets including logos and images
 
 ### Key Components
@@ -47,10 +46,11 @@ for styling and is currently displaying a "coming soon" page.
 
 ### Styling Architecture
 
-- Global Tailwind directives in `src/stylesheets/global.scss` 
-- Tailwind CSS automatically configured via @astrojs/tailwind integration
-- Content paths configured in `tailwind.config.mjs` for purging
+- Single `@import "tailwindcss"` directive in `src/stylesheets/global.scss`
+- Custom theme colors configured using CSS `@theme` block
+- Tailwind CSS 4.x using native @tailwindcss/vite plugin
 - Utility-first approach with responsive and state variants
+- No separate config file needed - configuration in CSS
 
 ### Static Assets
 
@@ -80,7 +80,8 @@ Uses pnpm as the package manager. Use `pnpm` instead of `npm` for all commands.
 - **Converted**: React components → Astro components
 - **Moved**: `src/images/` → `public/` for static assets
 - **Replaced**: GraphQL queries → direct imports and props
-- **Styling**: Bulma CSS → Tailwind CSS utility framework
+- **Styling**: Bulma CSS → Tailwind CSS 4.x utility framework
+- **Config**: Tailwind config.js → CSS-based @theme configuration
 
 ## Development Guidelines
 

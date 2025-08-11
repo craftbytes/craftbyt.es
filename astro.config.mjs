@@ -1,10 +1,12 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://craftbyt.es',
   build: {
     assets: '_astro'
   },
-  integrations: [tailwind()]
+  vite: {
+    plugins: [tailwindcss()]
+  }
 });
