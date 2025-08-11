@@ -5,8 +5,8 @@ code in this repository.
 
 ## Project Overview
 
-This is a Gatsby-based static website for Craftbytes, a web and mobile app
-development company. The site uses React components with Bulma CSS framework
+This is an Astro-based static website for Craftbytes, a web and mobile app
+development company. The site uses Astro components with Bulma CSS framework
 for styling and is currently displaying a "coming soon" page.
 
 ## Commands
@@ -28,22 +28,20 @@ for styling and is currently displaying a "coming soon" page.
 
 ### Core Technologies
 
-- **Gatsby 5.x** - Static site generator
-- **React 18.x** - UI framework  
+- **Astro 5.x** - Static site generator
 - **Bulma 1.x** - CSS framework
-- **SCSS** - Stylesheet preprocessor via gatsby-plugin-sass
+- **SCSS** - Stylesheet preprocessor
 
 ### Project Structure
 
-- `src/components/` - Reusable React components (Header, Layout, SEO, etc.)
-- `src/pages/` - Gatsby pages (currently just index.js and 404.js)
+- `src/layouts/` - Astro layout components
+- `src/pages/` - Astro pages (currently index.astro and 404.astro)
 - `src/stylesheets/` - SCSS files with Bulma customizations
-- `src/images/` - Static assets including logos
+- `public/` - Static assets including logos and images
 
 ### Key Components
 
-- `Layout` component wraps pages with Header and uses StaticQuery for site metadata
-- `SEO` component handles meta tags and page titles
+- `Layout.astro` component handles SEO metadata and page structure
 - Uses Bulma CSS classes throughout (e.g., `hero`, `has-background-primary`, `columns`)
 
 ### Styling Architecture
@@ -51,12 +49,12 @@ for styling and is currently displaying a "coming soon" page.
 - Global styles in `src/stylesheets/global.scss` import Bulma with custom overrides
 - Custom variables in `_bulma_overrides.scss`
 - Additional helper classes in `_helpers.scss` and `_grid.scss`
+- Styles imported directly in Astro components
 
-### GraphQL Usage
+### Static Assets
 
-- Site metadata queried via StaticQuery in Layout component
-- Image processing through gatsby-transformer-sharp for logo display
-- File system source plugin configured for src directory
+- Images and assets served from `public/` directory
+- Direct file references in Astro components (e.g., `/cb-logo-type.png`)
 
 ## Package Manager
 
@@ -67,31 +65,20 @@ Uses pnpm as the package manager. Use `pnpm` instead of `npm` for all commands.
 ### ✅ Development Server
 
 - `pnpm develop` works successfully
-- Site loads at <http://localhost:8000/>
+- Site loads at <http://localhost:4321/>
 
 ### ✅ Production Build  
 
 - `pnpm build` works successfully
-- React 18.x compatibility with Gatsby 5.14.6 is stable
+- Astro 5.x generates static HTML files
 - Static site generation completes without errors
 
-### 📦 Package Changes Made
+### 📦 Migration Changes Made
 
-- **Downgraded**: React 19.x → React 18.x for Gatsby compatibility
-- **Replaced**: `gatsby-image` → direct image imports
-- **Replaced**: `node-sass` → `sass`
-- **Removed**: Sharp-dependent plugins for local development
-
-### 🚀 For Ubuntu Deployment
-
-**Add PWA manifest** back if needed:
-
-   ```js
-   {
-     resolve: `gatsby-plugin-manifest`,
-     options: { /* your manifest config */ }
-   }
-   ```
+- **Migrated**: Gatsby → Astro 5.x
+- **Converted**: React components → Astro components
+- **Moved**: `src/images/` → `public/` for static assets
+- **Replaced**: GraphQL queries → direct imports and props
 
 ## Development Guidelines
 
@@ -99,6 +86,7 @@ Uses pnpm as the package manager. Use `pnpm` instead of `npm` for all commands.
 
 - **Always use Commitizen** (`cz commit`) for structured commit messages
 - **Never mention Claude Code or AI collaboration** in commit messages
+- Use `feature/astro-migration-2025` branch for Astro conversion work
 - Follow conventional commit format: `type(scope): description`
 - Use emojis sparingly, following existing project style (e.g., `🔼` for upgrades)
 
