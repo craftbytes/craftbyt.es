@@ -1,0 +1,44 @@
+---
+import '../stylesheets/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string[];
+}
+
+const { 
+  title = 'craftbytes',
+  description = 'Web and mobile apps development and design',
+  keywords = ['Craftbytes', 'craftbyt.es', 'Mobile Applications', 'Bespoke Software development']
+} = Astro.props;
+
+const pageTitle = title === 'craftbytes' ? title : `${title} | craftbytes`;
+const keywordString = keywords.join(', ');
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywordString} />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@craftbytes" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+  </head>
+  <body class="bg-craftbytes-blue">
+    <slot />
+  </body>
+</html>

@@ -1,36 +1,24 @@
 {
   "name": "craftbytes-website",
   "private": true,
-  "description": "Craftbytes website, built using GatsbyJS",
+  "description": "Craftbytes website, built using Astro",
   "version": "0.1.0",
   "author": "Raoul DIFFOUO <diraulo@gmail.com>",
   "dependencies": {
-    "bulma": "^1.0.4",
-    "gatsby": "^5.14.6",
-    "gatsby-plugin-image": "^3.14.0",
-    "gatsby-plugin-manifest": "^5.14.0",
-    "gatsby-plugin-offline": "^6.14.0",
-    "gatsby-plugin-react-helmet": "^6.14.0",
-    "gatsby-plugin-sass": "^6.14.0",
-    "gatsby-plugin-sharp": "^5.14.0",
-    "gatsby-source-filesystem": "^5.14.0",
-    "gatsby-transformer-sharp": "^5.14.0",
-    "prop-types": "^15.8.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-helmet": "^6.1.0",
-    "sass": "^1.90.0"
+    "@tailwindcss/vite": "^4.1.11",
+    "astro": "^5.1.1",
+    "tailwindcss": "^4.0.0"
   },
   "keywords": [
-    "gatsby"
+    "astro"
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+    "build": "astro build",
+    "develop": "astro dev",
+    "start": "pnpm develop",
+    "serve": "astro preview",
+    "test": "echo \"Write tests! -> https://docs.astro.build/en/guides/testing/\""
   },
   "repository": {
     "type": "git",
