@@ -6,7 +6,7 @@
   "author": "Raoul DIFFOUO <diraulo@gmail.com>",
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
-    "astro": "^5.1.1",
+    "astro": "^5.14.3",
     "tailwindcss": "^4.0.0"
   },
   "keywords": [
