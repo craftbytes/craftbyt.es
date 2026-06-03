@@ -1,47 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-craftbytes-blue: #0d465e;
-  --color-craftbytes-blue-light: #1a536b;
-  --color-craftbytes-red: #ff6b6b;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-surface: #13161c;
+  --color-surface-2: #1a1e27;
+  --color-border: #252a36;
+  --color-text: #e1e4ea;
+  --color-text-dim: #8b95a8;
+  --color-text-muted: #5c6477;
+  --color-accent: #6c8cff;
+  --color-accent-dim: #4a6ae0;
+  --color-accent-glow: rgba(108, 140, 255, 0.08);
 }
 
-/* Force generation of all utilities we need */
-@layer utilities {
-  .bg-craftbytes-blue {
-    background-color: #0d465e;
-  }
-  .bg-craftbytes-blue-light {
-    background-color: #1a536b;
-  }
-  .text-craftbytes-blue {
-    color: var(--color-craftbytes-blue);
-  }
-  
-  /* Standard Tailwind utilities that might not be generating */
-  .min-h-screen {
-    min-height: 100vh;
-  }
-  .flex {
-    display: flex;
-  }
-  .items-center {
-    align-items: center;
-  }
-  .justify-center {
-    justify-content: center;
-  }
-  .text-center {
-    text-align: center;
-  }
-  .max-w-lg {
-    max-width: 32rem;
-  }
-  .mx-auto {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .block {
-    display: block;
-  }
-}
+/* Font loading handled via <link> in Layout */
