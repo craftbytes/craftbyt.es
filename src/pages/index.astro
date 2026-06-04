@@ -19,45 +19,51 @@ import Footer from '../components/Footer.astro';
   </div>
 
   <!-- Header with expandable navigation -->
-  <header class="absolute top-2 right-0 left-0 z-40 pt-14" id="site-header">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="mx-auto max-w-2xl lg:max-w-none">
-        <div class="flex items-center justify-between">
-          <a href="/" aria-label="Home" class="flex items-center gap-2">
-            <img src="/cb-logo-type.svg" alt="Craftbytes" class="h-8" />
-          </a>
-          <div class="flex items-center gap-x-8">
-            <a
-              href="mailto:hello@craftbyt.es"
-              class="inline-flex rounded-full bg-neutral-950 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-neutral-800"
-            >
-              Contact
+  <header class="relative z-50" id="site-header">
+    <!-- Floating header bar (visible when nav is closed) -->
+    <div id="header-bar" class="absolute top-2 left-0 right-0 z-40 pt-14" aria-hidden="false">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl lg:max-w-none">
+          <div class="flex items-center justify-between">
+            <a href="/" aria-label="Home" class="flex items-center gap-2">
+              <img src="/cb-logo-type.svg" alt="Craftbytes" class="h-8" />
             </a>
-            <button
-              type="button"
-              id="nav-toggle"
-              class="group -m-2.5 rounded-full p-2.5 transition hover:bg-neutral-950/10"
-              aria-label="Toggle navigation"
-              aria-expanded="false"
-              aria-controls="nav-panel"
-            >
-              <!-- Hamburger icon -->
-              <svg id="menu-icon" class="h-6 w-6 fill-neutral-950 group-hover:fill-neutral-700" viewBox="0 0 24 24" stroke="none">
-                <rect id="menu-line-1" x="3" y="6" width="18" height="2" rx="1" />
-                <rect id="menu-line-2" x="3" y="11" width="18" height="2" rx="1" />
-                <rect id="menu-line-3" x="3" y="16" width="18" height="2" rx="1" />
-              </svg>
-            </button>
+            <div class="flex items-center gap-x-8">
+              <a
+                href="mailto:hello@craftbyt.es"
+                class="inline-flex rounded-full bg-neutral-950 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-neutral-800"
+              >
+                Contact
+              </a>
+              <button
+                type="button"
+                id="nav-toggle"
+                class="group -m-2.5 rounded-full p-2.5 transition hover:bg-neutral-950/10"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+                aria-controls="nav-panel"
+              >
+                <!-- Hamburger icon (visible when closed) -->
+                <svg id="hamburger-icon" class="h-6 w-6 fill-neutral-950 group-hover:fill-neutral-700" viewBox="0 0 24 24" stroke="none">
+                  <path d="M2 6h20v2H2zM2 16h20v2H2z" />
+                </svg>
+                <!-- X icon (visible when open) -->
+                <svg id="close-icon" class="h-6 w-6 fill-neutral-950 group-hover:fill-neutral-700" viewBox="0 0 24 24" stroke="none" style="display: none;">
+                  <path d="m5.636 4.223 14.142 14.142-1.414 1.414L4.222 5.637z" />
+                  <path d="M4.222 18.363 18.364 4.22l1.414 1.414L5.636 19.777z" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Expandable navigation panel -->
+    <!-- Expandable navigation panel (in flow — pushes content down) -->
     <div
       id="nav-panel"
       class="relative z-50 overflow-hidden bg-neutral-950"
-      style="max-height: 0; opacity: 0; transition: max-height 0.5s ease, opacity 0.3s ease;"
+      style="height: 0"
       aria-hidden="true"
     >
       <div class="bg-neutral-800">
@@ -450,25 +456,67 @@ import Footer from '../components/Footer.astro';
       const toggle = document.getElementById('nav-toggle');
       const close = document.getElementById('nav-close');
       const panel = document.getElementById('nav-panel');
-      const header = document.getElementById('site-header');
+      const headerBar = document.getElementById('header-bar');
+      const hamburger = document.getElementById('hamburger-icon');
+      const closeIcon = document.getElementById('close-icon');
       let isOpen = false;
+      let isAnimating = false;
 
       function openNav() {
+        if (isAnimating || isOpen) return;
+        isAnimating = true;
         isOpen = true;
-        panel.style.maxHeight = panel.scrollHeight + 'px';
-        panel.style.opacity = '1';
-        panel.setAttribute('aria-hidden', 'false');
+
+        // Show the panel first so we can measure it
+        panel.style.height = 'auto';
+        panel.removeAttribute('aria-hidden');
+        const targetHeight = panel.scrollHeight;
+
+        // Reset to 0 and animate
+        panel.style.height = '0';
+        // Force layout calc
+        panel.getBoundingClientRect();
+        // Apply transition and animate
+        panel.style.transition = 'height 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+        panel.style.height = targetHeight + 'px';
+
+        headerBar?.setAttribute('aria-hidden', 'true');
         toggle?.setAttribute('aria-expanded', 'true');
+        hamburger?.style.setProperty('display', 'none');
+        closeIcon?.style.removeProperty('display');
         document.body.style.overflow = 'hidden';
+
+        panel.addEventListener('transitionend', function onEnd() {
+          panel.style.height = 'auto';
+          panel.removeEventListener('transitionend', onEnd);
+          isAnimating = false;
+        });
       }
 
       function closeNav() {
+        if (isAnimating || !isOpen) return;
+        isAnimating = true;
         isOpen = false;
-        panel.style.maxHeight = '0';
-        panel.style.opacity = '0';
-        panel.setAttribute('aria-hidden', 'true');
+
+        // Measure current height and animate to 0
+        const currentHeight = panel.scrollHeight;
+        panel.style.height = currentHeight + 'px';
+        panel.getBoundingClientRect();
+        panel.style.transition = 'height 0.4s cubic-bezier(0.22, 1, 0.36, 1)';
+        panel.style.height = '0';
+
+        headerBar?.setAttribute('aria-hidden', 'false');
         toggle?.setAttribute('aria-expanded', 'false');
+        hamburger?.style.removeProperty('display');
+        closeIcon?.style.setProperty('display', 'none');
         document.body.style.overflow = '';
+
+        panel.addEventListener('transitionend', function onEnd() {
+          panel.setAttribute('aria-hidden', 'true');
+          panel.style.transition = '';
+          panel.removeEventListener('transitionend', onEnd);
+          isAnimating = false;
+        });
       }
 
       toggle?.addEventListener('click', openNav);
