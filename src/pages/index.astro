@@ -1,252 +1,449 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import Button from '../components/Button.astro';
+import ContactSection from '../components/ContactSection.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout>
+  <!-- Grid pattern background -->
+  <div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+    <svg class="h-full w-full opacity-[0.03]" aria-hidden="true">
+      <defs>
+        <pattern id="hero-grid" width="96" height="480" patternUnits="userSpaceOnUse" fill="none">
+          <path d="M128 0 98.572 147.138A16 16 0 0 1 82.883 160H13.117a16 16 0 0 0-15.69 12.862l-26.855 134.276A16 16 0 0 1-45.117 320H-116M64-160 34.572-12.862A16 16 0 0 1 18.883 0h-69.766a16 16 0 0 0-15.69 12.862l-26.855 134.276A16 16 0 0 1-109.117 160H-180M192 160l-29.428 147.138A15.999 15.999 0 0 1 146.883 320H77.117a16 16 0 0 0-15.69 12.862L34.573 467.138A16 16 0 0 1 18.883 480H-52" stroke="currentColor" fill="none"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#hero-grid)" />
+    </svg>
+  </div>
+
   <!-- Header -->
-  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-[#0b0d11]/80 border-b border-border">
-    <div class="max-w-[1000px] mx-auto px-6 h-[60px] flex items-center justify-between">
-      <a href="#" class="font-bold text-lg">
-        <span class="bg-gradient-to-r from-accent to-purple-400 bg-clip-text text-transparent">Craftbytes</span><span class="text-text-dim font-normal">.</span>
-      </a>
-      <nav class="flex items-center gap-8">
-        <a href="#services" class="text-text-dim text-sm font-medium hover:text-text transition-colors">Services</a>
-        <a href="#about" class="text-text-dim text-sm font-medium hover:text-text transition-colors">About</a>
-        <a href="#contact" class="bg-accent text-white px-4 py-1.5 rounded-md text-xs font-semibold hover:bg-accent-dim transition-colors">Get in touch</a>
-      </nav>
+  <header class="relative z-50">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 pt-14">
+      <div class="mx-auto max-w-2xl lg:max-w-none">
+        <div class="flex items-center justify-between">
+          <a href="/" aria-label="Home" class="flex items-center gap-2">
+            <img src="/cb-logo-type.svg" alt="Craftbytes" class="h-8" />
+          </a>
+          <div class="flex items-center gap-x-8">
+            <a
+              href="mailto:hello@craftbyt.es"
+              class="inline-flex rounded-full bg-neutral-950 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-neutral-800"
+            >
+              Contact
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="pt-32 pb-16 relative overflow-hidden">
-    <div class="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(108,140,255,0.08)_0%,transparent_70%)] pointer-events-none"></div>
-    <div class="max-w-[1000px] mx-auto px-6 relative">
-      <div class="flex gap-2 flex-wrap mb-6">
-        <span class="inline-flex items-center gap-1.5 bg-surface-2 border border-border px-3 py-1.5 rounded-md text-xs text-text-dim">
-          <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> Available for engagements
-        </span>
-        <span class="inline-flex items-center gap-1.5 bg-surface-2 border border-border px-3 py-1.5 rounded-md text-xs text-text-dim">
-          <span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Ontario, Canada
-        </span>
-        <span class="inline-flex items-center gap-1.5 bg-surface-2 border border-border px-3 py-1.5 rounded-md text-xs text-text-dim">
-          <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> Remote-first
-        </span>
-      </div>
-      <h1 class="text-[clamp(2.2rem,5vw,3.5rem)] font-semibold leading-tight -tracking-[0.02em] mb-5">
-        Software consulting &<br>
-        <span class="bg-gradient-to-r from-accent to-purple-400 bg-clip-text text-transparent">fractional technical leadership</span>
-      </h1>
-      <p class="text-lg text-text-dim max-w-[650px] mb-8 leading-relaxed">
-        I help growing teams ship better software — architecture, platform engineering,
-        and hands-on technical direction. Based in Canada, working globally.
-      </p>
-      <div class="flex gap-4 flex-wrap">
-        <a href="#contact" class="inline-flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-accent-dim transition-all hover:-translate-y-0.5">
-          Work with me →
-        </a>
-        <a href="#services" class="inline-flex items-center gap-2 bg-surface-2 text-text border border-border px-6 py-3 rounded-lg text-sm font-semibold hover:bg-border transition-all">
-          View services
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section id="services" class="py-16">
-    <div class="max-w-[1000px] mx-auto px-6">
-      <h2 class="text-[clamp(1.5rem,3vw,2rem)] font-semibold -tracking-[0.01em] mb-2">Services</h2>
-      <p class="text-text-dim mb-12 max-w-[600px]">
-        Flexible engagement — from a strategic advisory call to embedded, ongoing technical leadership.
-      </p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <!-- Fractional CTO -->
-        <div class="bg-surface border border-border rounded-xl p-7 hover:border-accent transition-all hover:-translate-y-0.5">
-          <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4 text-xl">⚡</div>
-          <h3 class="text-lg font-semibold mb-2">Fractional CTO</h3>
-          <p class="text-text-dim text-sm mb-3">Technical leadership for teams that don't need (or can't afford) a full-time CTO yet.</p>
-          <ul class="space-y-1 text-text-dim text-xs">
-            <li class="pl-4 relative before:content-['→'] before:absolute before:left-0 before:text-accent">Technical strategy & roadmap</li>
-            <li class="pl-4 relative before:content-['→'] before:absolute before:left-0 before:text-accent">Team mentoring & hiring</li>
-            <li class="pl-4 relative before:content-['→'] before:absolute before:left-0 before:text-accent">Architecture decisions & reviews</li>
-            <li class="pl-4 relative before:content-['→'] before:absolute before:left-0 before:text-accent">5–20 hours/week, flexible</li>
-          </ul>
-        </div>
-
-        <!-- Backend Architecture -->
-        <div class="bg-surface border border-border rounded-xl p-7 hover:border-accent transition-all hover:-translate-y-0.5">
-          <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4 text-xl">🛠️</div>
-          <h3 class="text-lg font-semibold mb-2">Backend Architecture</h3>
-          <p class="text-text-dim text-sm mb-3">Design and build the systems that scale with your product — not against it.</p>
-          <ul class="space-y-1 text-text-dim text-xs">
-            <li class="pl-4 relative before:content-['→'] before:absolute before:left-0 before:text-accent">Elixir & Phoenix applications</li>
-            <li class="pl-4 relative before:content-['→'] before:absolute before:left-0 before:text-accent">API design & real-time systems</li>
-            <li class="pl-4 relative before:content-['→'] before:absolute before:left-0 before:text-accent">Data pipelines & event-driven architecture</li>
-            <li class="pl-4 relative before:content-['→'] before:absolute before:left-0 before:text-accent">Performance optimisation</li>
-          </ul>
-        </div>
-
-        <!-- Platform & Infrastructure -->
-        <div class="bg-surface border border-border rounded-xl p-7 hover:border-accent transition-all hover:-translate-y-0.5">
-          <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4 text-xl">☁️</div>
-          <h3 class="text-lg font-semibold mb-2">Platform & Infrastructure</h3>
-          <p class="text-text-dim text-sm mb-3">Infrastructure that your team can actually ship on. Kubernetes, GitOps, and deployment pipelines.</p>
-          <ul class="space-y-1 text-text-dim text-xs">
-            <li class="pl-4 relative before:content-['→'] before:absolute before:left-0 before:text-accent">Kubernetes architecture & operations</li>
-            <li class="pl-4 relative before:content-['→'] before:absolute before:left-0 before:text-accent">GitOps workflows (ArgoCD / Flux)</li>
-            <li class="pl-4 relative before:content-['→'] before:absolute before:left-0 before:text-accent">CI/CD pipeline design</li>
-            <li class="pl-4 relative before:content-['→'] before:absolute before:left-0 before:text-accent">Observability & incident response</li>
-          </ul>
-        </div>
-
-        <!-- Technical Due Diligence -->
-        <div class="bg-surface border border-border rounded-xl p-7 hover:border-accent transition-all hover:-translate-y-0.5">
-          <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4 text-xl">🔍</div>
-          <h3 class="text-lg font-semibold mb-2">Technical Due Diligence</h3>
-          <p class="text-text-dim text-sm mb-3">An independent look at your codebase, architecture, and engineering practices.</p>
-          <ul class="space-y-1 text-text-dim text-xs">
-            <li class="pl-4 relative before:content-['→'] before:absolute before:left-0 before:text-accent">Codebase & architecture audit</li>
-            <li class="pl-4 relative before:content-['→'] before:absolute before:left-0 before:text-accent">Technical debt assessment</li>
-            <li class="pl-4 relative before:content-['→'] before:absolute before:left-0 before:text-accent">Security & compliance review</li>
-            <li class="pl-4 relative before:content-['→'] before:absolute before:left-0 before:text-accent">Actionable remediation roadmap</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- How I Work -->
-  <section class="py-16">
-    <div class="max-w-[1000px] mx-auto px-6">
-      <h2 class="text-[clamp(1.5rem,3vw,2rem)] font-semibold -tracking-[0.01em] mb-2">How I work</h2>
-      <p class="text-text-dim mb-12 max-w-[600px]">
-        No time-sheets, no bureaucracy. Just clear outcomes and direct communication.
-      </p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <div class="bg-surface border border-border rounded-xl p-6 text-center">
-          <div class="text-[2rem] font-bold bg-gradient-to-r from-accent to-purple-400 bg-clip-text text-transparent mb-2">01</div>
-          <h3 class="font-semibold mb-2">Understand</h3>
-          <p class="text-text-dim text-xs leading-relaxed">We talk through where you are, where you want to be, and what's in the way.</p>
-        </div>
-        <div class="bg-surface border border-border rounded-xl p-6 text-center">
-          <div class="text-[2rem] font-bold bg-gradient-to-r from-accent to-purple-400 bg-clip-text text-transparent mb-2">02</div>
-          <h3 class="font-semibold mb-2">Plan</h3>
-          <p class="text-text-dim text-xs leading-relaxed">I lay out a concrete plan — scope, timeline, and expected outcomes — no surprises.</p>
-        </div>
-        <div class="bg-surface border border-border rounded-xl p-6 text-center">
-          <div class="text-[2rem] font-bold bg-gradient-to-r from-accent to-purple-400 bg-clip-text text-transparent mb-2">03</div>
-          <h3 class="font-semibold mb-2">Execute</h3>
-          <p class="text-text-dim text-xs leading-relaxed">Hands-on delivery. Code, architecture, or leadership — whatever the situation needs.</p>
-        </div>
-        <div class="bg-surface border border-border rounded-xl p-6 text-center">
-          <div class="text-[2rem] font-bold bg-gradient-to-r from-accent to-purple-400 bg-clip-text text-transparent mb-2">04</div>
-          <h3 class="font-semibold mb-2">Evolve</h3>
-          <p class="text-text-dim text-xs leading-relaxed">We iterate. I stay as long as I'm useful, and you're never locked into a contract.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="py-16">
-    <div class="max-w-[1000px] mx-auto px-6">
-      <h2 class="text-[clamp(1.5rem,3vw,2rem)] font-semibold -tracking-[0.01em] mb-2">About</h2>
-      <p class="text-text-dim mb-12 max-w-[600px]">
-        A backend engineer who's built and operated systems at scale.
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-        <div>
-          <p class="text-text-dim text-sm leading-relaxed mb-4">
-            I'm <strong class="text-text font-semibold">Raoul</strong>, a backend engineer based in Ontario, Canada.
-            I specialise in <strong class="text-text font-semibold">Elixir & Phoenix</strong>, distributed systems,
-            and platform engineering with Kubernetes and GitOps.
+  <section class="relative overflow-hidden pb-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 md:mt-56">
+      <div class="mx-auto max-w-2xl lg:max-w-none">
+        <div class="fade-in max-w-3xl" data-observe>
+          <h1 class="font-display text-5xl font-medium tracking-tight text-balance text-neutral-950 sm:text-7xl">
+            Backend architecture &<br />
+            <span class="text-accent">fractional CTO</span><br />
+            for growing teams.
+          </h1>
+          <p class="mt-6 text-xl text-neutral-600 max-w-2xl">
+            I help teams ship better software — hands-on with Elixir, Phoenix, and
+            platform engineering. Based in Ontario, Canada, working globally.
           </p>
-          <p class="text-text-dim text-sm leading-relaxed mb-4">
-            Over the years I've designed APIs, built real-time systems, operated
-            production infrastructure, and led engineering teams — both as a full-time
-            engineer and as a fractional technical lead.
-          </p>
-          <p class="text-text-dim text-sm leading-relaxed mb-6">
-            I work remotely with teams across North America and Europe. Every engagement
-            is hands-on: I don't just advise, I build.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-surface-2 border border-border px-2.5 py-1 rounded-md text-[0.8rem] text-text-dim font-mono">Elixir</span>
-            <span class="bg-surface-2 border border-border px-2.5 py-1 rounded-md text-[0.8rem] text-text-dim font-mono">Phoenix</span>
-            <span class="bg-surface-2 border border-border px-2.5 py-1 rounded-md text-[0.8rem] text-text-dim font-mono">Erlang/OTP</span>
-            <span class="bg-surface-2 border border-border px-2.5 py-1 rounded-md text-[0.8rem] text-text-dim font-mono">Kubernetes</span>
-            <span class="bg-surface-2 border border-border px-2.5 py-1 rounded-md text-[0.8rem] text-text-dim font-mono">ArgoCD</span>
-            <span class="bg-surface-2 border border-border px-2.5 py-1 rounded-md text-[0.8rem] text-text-dim font-mono">PostgreSQL</span>
-            <span class="bg-surface-2 border border-border px-2.5 py-1 rounded-md text-[0.8rem] text-text-dim font-mono">AWS</span>
-            <span class="bg-surface-2 border border-border px-2.5 py-1 rounded-md text-[0.8rem] text-text-dim font-mono">Terraform</span>
+          <div class="mt-10 flex gap-4 flex-wrap">
+            <a
+              href="mailto:hello@craftbyt.es"
+              class="inline-flex rounded-full bg-neutral-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800"
+            >
+              Work with me <span aria-hidden="true" class="ml-2">&rarr;</span>
+            </a>
+            <a
+              href="#services"
+              class="inline-flex rounded-full bg-neutral-100 px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:bg-neutral-200"
+            >
+              View services
+            </a>
           </div>
         </div>
-        <div class="bg-surface border border-border rounded-xl p-6">
-          <h4 class="text-[0.8rem] uppercase tracking-wider text-text-muted mb-4 font-semibold">Engagement details</h4>
-          <ul class="space-y-0">
-            <li class="py-3 border-b border-border flex items-center gap-2 text-sm text-text-dim last:border-b-0">
-              <span class="text-text-muted text-xs min-w-[80px]">Location</span>
-              <span class="text-text">Ontario, Canada (EST/EDT)</span>
-            </li>
-            <li class="py-3 border-b border-border flex items-center gap-2 text-sm text-text-dim last:border-b-0">
-              <span class="text-text-muted text-xs min-w-[80px]">Time zones</span>
-              <span class="text-text">EST • GMT ±3 preferred</span>
-            </li>
-            <li class="py-3 border-b border-border flex items-center gap-2 text-sm text-text-dim last:border-b-0">
-              <span class="text-text-muted text-xs min-w-[80px]">Start from</span>
-              <span class="text-text">2 weeks (typical)</span>
-            </li>
-            <li class="py-3 border-b border-border flex items-center gap-2 text-sm text-text-dim last:border-b-0">
-              <span class="text-text-muted text-xs min-w-[80px]">Minimum</span>
-              <span class="text-text">8 hours/week</span>
-            </li>
-            <li class="py-3 border-b border-border flex items-center gap-2 text-sm text-text-dim last:border-b-0">
-              <span class="text-text-muted text-xs min-w-[80px]">Billing</span>
-              <span class="text-text">Weekly retainer or hourly</span>
-            </li>
-            <li class="py-3 border-b border-border flex items-center gap-2 text-sm text-text-dim last:border-b-0">
-              <span class="text-text-muted text-xs min-w-[80px]">Rates</span>
-              <span class="text-text">From $125 CAD/hour</span>
-            </li>
-          </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Intro + List -->
+  <section id="services" class="relative overflow-hidden">
+    <SectionIntro
+      eyebrow="Services"
+      title="Technical leadership that scales with your team."
+      class="mt-24 sm:mt-32 lg:mt-40"
+    >
+      <p slot="children">
+        From a strategic advisory call to embedded, ongoing technical direction — I adapt
+        to what your team actually needs. No time-sheets, no bureaucracy.
+      </p>
+    </SectionIntro>
+
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 mt-16">
+      <div class="mx-auto max-w-2xl lg:max-w-none">
+        <div data-observe-stagger class="fade-in-stagger">
+          <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <!-- Fractional CTO -->
+            <div class="fade-in group relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5 transition hover:bg-neutral-50" data-observe>
+              <div class="flex items-center gap-4 mb-6">
+                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10">
+                  <svg class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605" />
+                  </svg>
+                </div>
+                <span class="inline-flex items-center rounded-full bg-accent/10 px-3 py-0.5 text-xs font-semibold text-accent">Popular</span>
+              </div>
+              <h3 class="font-display text-2xl font-semibold text-neutral-950">Fractional CTO</h3>
+              <p class="mt-4 text-base text-neutral-600">
+                Technical leadership for teams that don't need (or can't afford) a full-time CTO yet.
+              </p>
+              <ul class="mt-8 space-y-3 text-sm text-neutral-600">
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Technical strategy &amp; roadmap
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Team mentoring &amp; hiring
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Architecture decisions &amp; reviews
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  8–20 hours/week, flexible
+                </li>
+              </ul>
+            </div>
+
+            <!-- Backend Architecture -->
+            <div class="fade-in group relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5 transition hover:bg-neutral-50" data-observe>
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 mb-6">
+                <svg class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z" />
+                </svg>
+              </div>
+              <h3 class="font-display text-2xl font-semibold text-neutral-950">Backend Architecture</h3>
+              <p class="mt-4 text-base text-neutral-600">
+                Design and build the systems that scale with your product — not against it.
+              </p>
+              <ul class="mt-8 space-y-3 text-sm text-neutral-600">
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Elixir &amp; Phoenix applications
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  API design &amp; real-time systems
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Data pipelines &amp; event-driven architecture
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Performance optimisation
+                </li>
+              </ul>
+            </div>
+
+            <!-- Platform & Infrastructure -->
+            <div class="fade-in group relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5 transition hover:bg-neutral-50" data-observe>
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 mb-6">
+                <svg class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-3.758-3.848 5.25 5.25 0 0 0-10.233 2.33A4.502 4.502 0 0 0 2.25 15Z" />
+                </svg>
+              </div>
+              <h3 class="font-display text-2xl font-semibold text-neutral-950">Platform &amp; Infrastructure</h3>
+              <p class="mt-4 text-base text-neutral-600">
+                Infrastructure that your team can actually ship on. Kubernetes, GitOps, and deployment pipelines.
+              </p>
+              <ul class="mt-8 space-y-3 text-sm text-neutral-600">
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Kubernetes architecture &amp; operations
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  GitOps workflows (ArgoCD / Flux)
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  CI/CD pipeline design
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Observability &amp; incident response
+                </li>
+              </ul>
+            </div>
+
+            <!-- Technical Due Diligence -->
+            <div class="fade-in group relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5 transition hover:bg-neutral-50" data-observe>
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 mb-6">
+                <svg class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
+                </svg>
+              </div>
+              <h3 class="font-display text-2xl font-semibold text-neutral-950">Technical Due Diligence</h3>
+              <p class="mt-4 text-base text-neutral-600">
+                An independent look at your codebase, architecture, and engineering practices.
+              </p>
+              <ul class="mt-8 space-y-3 text-sm text-neutral-600">
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Codebase &amp; architecture audit
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Technical debt assessment
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Security &amp; compliance review
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Actionable remediation roadmap
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="py-16 border-t border-border">
-    <div class="max-w-[1000px] mx-auto px-6">
-      <div class="flex flex-wrap justify-between gap-8">
-        <div>
-          <h2 class="text-[clamp(1.5rem,3vw,2rem)] font-semibold -tracking-[0.01em] mb-2">Let's talk</h2>
-          <p class="text-text-dim text-sm max-w-[400px] leading-relaxed">
-            Whether you need a sounding board for an architecture decision or
-            ongoing technical leadership — send me a message and I'll get back
-            to you within a business day.
-          </p>
-        </div>
-        <div class="flex flex-col gap-3">
-          <a href="mailto:hello@craftbyt.es" class="flex items-center gap-3 text-text-dim text-sm bg-surface border border-border rounded-lg px-4 py-2.5 hover:text-text hover:border-accent transition-all">
-            <span class="text-base min-w-[20px] text-center">✉</span>
-            hello@craftbyt.es
-          </a>
-          <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="flex items-center gap-3 text-text-dim text-sm bg-surface border border-border rounded-lg px-4 py-2.5 hover:text-text hover:border-accent transition-all">
-            <span class="text-base min-w-[20px] text-center">🔗</span>
-            LinkedIn
-          </a>
-          <a href="https://github.com/ramulifho" target="_blank" rel="noopener" class="flex items-center gap-3 text-text-dim text-sm bg-surface border border-border rounded-lg px-4 py-2.5 hover:text-text hover:border-accent transition-all">
-            <span class="text-base min-w-[20px] text-center">⌨</span>
-            GitHub
-          </a>
+  <!-- Platform expertise section -->
+  <section class="relative overflow-hidden mt-24 sm:mt-32 lg:mt-40">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl lg:max-w-none">
+        <div class="lg:flex lg:items-center lg:justify-end">
+          <div class="flex justify-center lg:w-1/2 lg:justify-end lg:pr-12">
+            <div class="fade-in w-135 flex-none lg:w-180" data-observe>
+              <!-- Decorative tech stack visualization -->
+              <div class="relative aspect-[3/2] w-full rounded-3xl bg-neutral-950 p-8 flex flex-col justify-between overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent" aria-hidden="true"></div>
+                <div class="relative z-10">
+                  <div class="flex items-center gap-2 mb-6">
+                    <span class="h-3 w-3 rounded-full bg-red-500"></span>
+                    <span class="h-3 w-3 rounded-full bg-yellow-500"></span>
+                    <span class="h-3 w-3 rounded-full bg-green-500"></span>
+                  </div>
+                  <div class="space-y-3 font-mono text-sm leading-relaxed">
+                    <div class="flex items-center gap-2">
+                      <span class="text-emerald-400">❯</span>
+                      <span class="text-neutral-400">Stack:</span>
+                      <span class="text-white font-semibold">Elixir / Phoenix / OTP</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-emerald-400">❯</span>
+                      <span class="text-neutral-400">Infra:</span>
+                      <span class="text-white font-semibold">Kubernetes / GitOps / AWS</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-emerald-400">❯</span>
+                      <span class="text-neutral-400">Data:</span>
+                      <span class="text-white font-semibold">PostgreSQL / Redis / Kafka</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-emerald-400">❯</span>
+                      <span class="text-neutral-400">Observability:</span>
+                      <span class="text-white font-semibold">OpenTelemetry / Grafana</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-16 lg:mt-0 lg:w-1/2 lg:min-w-132 lg:pl-4">
+            <h2 class="font-display text-3xl font-medium tracking-tight text-balance text-neutral-950 sm:text-4xl mb-6">
+              Full-stack platform <span class="text-accent">expertise</span>.
+            </h2>
+            <p class="text-lg text-neutral-600 mb-8">
+              I've designed APIs, built real-time systems, operated production
+              infrastructure, and led engineering teams — both as a full-time
+              engineer and as a fractional technical lead.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700">Elixir</span>
+              <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700">Phoenix</span>
+              <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700">Erlang/OTP</span>
+              <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700">Kubernetes</span>
+              <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700">ArgoCD</span>
+              <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700">PostgreSQL</span>
+              <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700">AWS</span>
+              <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700">Terraform</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="py-8 border-t border-border text-center text-text-muted text-xs">
-    <div class="max-w-[1000px] mx-auto px-6">
-      <p>&copy; 2026 Craftbytes. All rights reserved.</p>
+  <!-- How I work -->
+  <section class="relative overflow-hidden mt-24 sm:mt-32 lg:mt-40">
+    <SectionIntro
+      title="How I work."
+      class=""
+    >
+      <p slot="children">
+        Clear outcomes, direct communication, no lock-in. Every engagement is hands-on.
+      </p>
+    </SectionIntro>
+
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 mt-16">
+      <div class="mx-auto max-w-2xl lg:max-w-none">
+        <div data-observe-stagger class="fade-in-stagger grid grid-cols-1 gap-8 lg:grid-cols-4">
+          <div class="fade-in relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5" data-observe>
+            <span class="font-display text-6xl font-semibold text-accent/20">01</span>
+            <h3 class="mt-4 font-display text-xl font-semibold text-neutral-950">Understand</h3>
+            <p class="mt-2 text-sm text-neutral-600">
+              We talk through where you are, where you want to be, and what's in the way.
+            </p>
+          </div>
+          <div class="fade-in relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5" data-observe>
+            <span class="font-display text-6xl font-semibold text-accent/20">02</span>
+            <h3 class="mt-4 font-display text-xl font-semibold text-neutral-950">Plan</h3>
+            <p class="mt-2 text-sm text-neutral-600">
+              A concrete plan — scope, timeline, and expected outcomes — no surprises.
+            </p>
+          </div>
+          <div class="fade-in relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5" data-observe>
+            <span class="font-display text-6xl font-semibold text-accent/20">03</span>
+            <h3 class="mt-4 font-display text-xl font-semibold text-neutral-950">Execute</h3>
+            <p class="mt-2 text-sm text-neutral-600">
+              Hands-on delivery. Code, architecture, or leadership — whatever's needed.
+            </p>
+          </div>
+          <div class="fade-in relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5" data-observe>
+            <span class="font-display text-6xl font-semibold text-accent/20">04</span>
+            <h3 class="mt-4 font-display text-xl font-semibold text-neutral-950">Evolve</h3>
+            <p class="mt-2 text-sm text-neutral-600">
+              We iterate. I stay as long as I'm useful — no lock-in contracts.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-  </footer>
+  </section>
+
+  <!-- About section -->
+  <section id="about" class="relative overflow-hidden mt-24 sm:mt-32 lg:mt-40">
+    <SectionIntro
+      title="About."
+      class=""
+    >
+      <p slot="children">
+        A backend engineer who's built and operated systems at scale.
+      </p>
+    </SectionIntro>
+
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 mt-16">
+      <div class="mx-auto max-w-2xl lg:max-w-none">
+        <div class="fade-in grid grid-cols-1 md:grid-cols-3 gap-10 items-start" data-observe>
+          <div class="md:col-span-2">
+            <p class="text-lg text-neutral-600 leading-relaxed mb-4">
+              I'm <strong class="font-semibold text-neutral-950">Raoul Diffouo</strong>, a backend engineer
+              based in Ontario, Canada. I specialise in <strong class="font-semibold text-neutral-950">Elixir &amp; Phoenix</strong>,
+              distributed systems, and platform engineering with Kubernetes and GitOps.
+            </p>
+            <p class="text-lg text-neutral-600 leading-relaxed mb-4">
+              I work remotely with teams across North America and Europe. Every engagement
+              is hands-on: I don't just advise, I build.
+            </p>
+            <p class="text-lg text-neutral-600 leading-relaxed">
+              When I'm not shipping code, I write about software architecture and
+              platform engineering at <a href="https://diraulo.dev" class="font-semibold underline underline-offset-2 decoration-neutral-300 hover:decoration-neutral-950 transition">diraulo.dev</a>.
+            </p>
+          </div>
+          <div class="rounded-3xl bg-neutral-50 p-8 ring-1 ring-neutral-950/5">
+            <h4 class="text-xs uppercase tracking-widest text-neutral-500 mb-6 font-semibold">Engagement details</h4>
+            <dl class="space-y-4 text-sm">
+              <div class="flex items-center justify-between border-b border-neutral-100 pb-4">
+                <dt class="text-neutral-500">Location</dt>
+                <dd class="text-neutral-950 font-medium">Ontario, Canada (EST)</dd>
+              </div>
+              <div class="flex items-center justify-between border-b border-neutral-100 pb-4">
+                <dt class="text-neutral-500">Time zones</dt>
+                <dd class="text-neutral-950 font-medium">EST • GMT ±3</dd>
+              </div>
+              <div class="flex items-center justify-between border-b border-neutral-100 pb-4">
+                <dt class="text-neutral-500">Minimum</dt>
+                <dd class="text-neutral-950 font-medium">8 hours/week</dd>
+              </div>
+              <div class="flex items-center justify-between border-b border-neutral-100 pb-4">
+                <dt class="text-neutral-500">Billing</dt>
+                <dd class="text-neutral-950 font-medium">Weekly retainer</dd>
+              </div>
+              <div class="flex items-center justify-between">
+                <dt class="text-neutral-500">Rate</dt>
+                <dd class="text-neutral-950 font-medium">From $125 CAD/hr</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <ContactSection>
+    <span slot="title">Let's build something together.</span>
+    <span slot="cta">
+      <a
+        href="mailto:hello@craftbyt.es"
+        class="inline-flex rounded-full bg-white px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:bg-neutral-200"
+      >
+        hello@craftbyt.es <span aria-hidden="true" class="ml-2">&rarr;</span>
+      </a>
+    </span>
+    <div slot="details">
+      <h3 class="font-display text-base font-semibold text-white/80">
+        Based in Ontario, Canada
+      </h3>
+      <p class="mt-2 text-sm text-white/40">
+        Working remotely with teams across North America and Europe.
+      </p>
+    </div>
+  </ContactSection>
+
+  <Footer />
+
+  <!-- Scroll animation script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target;
+              if (el.dataset.observeStagger !== undefined) {
+                el.querySelectorAll('.fade-in').forEach((child, i) => {
+                  child.style.transitionDelay = `${i * 120}ms`;
+                  child.classList.add('visible');
+                });
+              } else {
+                el.classList.add('visible');
+              }
+              observer.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -100px' }
+      );
+
+      document.querySelectorAll('[data-observe], [data-observe-stagger]').forEach((el) => {
+        observer.observe(el);
+      });
+    });
+  </script>
 </Layout>

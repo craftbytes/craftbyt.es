@@ -8,13 +8,10 @@ export interface Props {
 }
 
 const {
-  title = 'Craftbytes — Software Consultancy',
-  description = 'Software consulting and fractional technical leadership. Backend architecture, platform engineering, and hands-on technical direction.',
-  keywords = ['Craftbytes', 'craftbyt.es', 'Software Consulting', 'Fractional CTO', 'Elixir', 'Phoenix', 'Backend Architecture']
+  title = 'Craftbytes — Software Consultancy & Fractional CTO',
+  description = 'Software consulting and fractional technical leadership. Backend architecture, platform engineering, and hands-on technical direction from Raoul Diffouo.',
+  keywords = ['Craftbytes', 'craftbyt.es', 'Software Consulting', 'Fractional CTO', 'Elixir', 'Phoenix', 'Backend Architecture', 'Platform Engineering']
 } = Astro.props;
-
-const pageTitle = title === 'Craftbytes — Software Consultancy' ? title : `${title} | craftbytes`;
-const keywordString = keywords.join(', ');
 ---
 
 <!DOCTYPE html>
@@ -24,12 +21,9 @@ const keywordString = keywords.join(', ');
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
+    <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content={keywordString} />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <meta name="keywords" content={keywords.join(', ')} />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
@@ -39,11 +33,12 @@ const keywordString = keywords.join(', ');
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:creator" content="@craftbytes" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+
+    <link rel="preload" href="/fonts/Mona-Sans.var.woff2" as="font" type="font/woff2" crossorigin />
   </head>
-  <body class="bg-[#0b0d11] text-text font-sans antialiased">
+  <body class="bg-white text-neutral-950 font-sans antialiased overflow-x-hidden">
     <slot />
   </body>
 </html>

@@ -1,0 +1,31 @@
+---
+export interface Props {
+  class?: string;
+  children?: any;
+}
+
+const { class: className, children } = Astro.props;
+const cls = className || '';
+---
+
+<div
+  class:list={['mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 lg:mt-40', cls]}
+>
+  <div class="mx-auto max-w-2xl lg:max-w-none">
+    <div class="fade-in -mx-6 rounded-4xl bg-surface-2 px-6 py-20 sm:mx-0 sm:py-32 md:px-12" data-observe>
+      <div class="mx-auto max-w-4xl">
+        <div class="max-w-xl">
+          <h2 class="font-display text-3xl font-medium text-balance text-white sm:text-4xl">
+            <slot name="title" />
+          </h2>
+          <div class="mt-6 flex">
+            <slot name="cta" />
+          </div>
+          <div class="mt-10 border-t border-white/10 pt-10">
+            <slot name="details" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
