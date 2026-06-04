@@ -63,7 +63,7 @@ import Footer from '../components/Footer.astro';
     <div
       id="nav-panel"
       class="relative z-50 overflow-hidden bg-neutral-950"
-      style="height: 0"
+      style="height: 0.5rem"
       aria-hidden="true"
     >
       <div class="bg-neutral-800">
@@ -150,8 +150,12 @@ import Footer from '../components/Footer.astro';
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="relative overflow-hidden pb-16">
+  <!-- White content card with rounded top corners -->
+  <div class="relative flex flex-auto overflow-hidden bg-white rounded-t-[40px]">
+    <div class="relative isolate flex w-full flex-col pt-9">
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden pb-16">
     <div class="mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 md:mt-56">
       <div class="mx-auto max-w-2xl lg:max-w-none">
         <div class="fade-in max-w-3xl" data-observe>
@@ -448,8 +452,9 @@ import Footer from '../components/Footer.astro';
   </ContactSection>
 
   <Footer />
+    </div>
+  </div>
 
-  <!-- Scroll animation script -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // Navigation menu toggle
@@ -472,8 +477,8 @@ import Footer from '../components/Footer.astro';
         panel.removeAttribute('aria-hidden');
         const targetHeight = panel.scrollHeight;
 
-        // Reset to 0 and animate
-        panel.style.height = '0';
+        // Reset to closed height and animate
+        panel.style.height = '0.5rem';
         // Force layout calc
         panel.getBoundingClientRect();
         // Apply transition and animate
@@ -498,12 +503,12 @@ import Footer from '../components/Footer.astro';
         isAnimating = true;
         isOpen = false;
 
-        // Measure current height and animate to 0
+        // Measure current height and animate to closed
         const currentHeight = panel.scrollHeight;
         panel.style.height = currentHeight + 'px';
         panel.getBoundingClientRect();
         panel.style.transition = 'height 0.4s cubic-bezier(0.22, 1, 0.36, 1)';
-        panel.style.height = '0';
+        panel.style.height = '0.5rem';
 
         headerBar?.setAttribute('aria-hidden', 'false');
         toggle?.setAttribute('aria-expanded', 'false');
