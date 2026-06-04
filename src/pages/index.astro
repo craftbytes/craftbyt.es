@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SectionIntro from '../components/SectionIntro.astro';
-import Button from '../components/Button.astro';
 import ContactSection from '../components/ContactSection.astro';
 import Footer from '../components/Footer.astro';
 ---
@@ -51,15 +50,15 @@ import Footer from '../components/Footer.astro';
             for growing teams.
           </h1>
           <p class="mt-6 text-xl text-neutral-600 max-w-2xl">
-            I help teams ship better software — hands-on with Elixir, Phoenix, and
-            platform engineering. Based in Ontario, Canada, working globally.
+            Craftbytes provides hands-on engineering leadership and delivery — from Elixir and
+            Ruby on Rails to Kubernetes and GitOps.
           </p>
           <div class="mt-10 flex gap-4 flex-wrap">
             <a
               href="mailto:hello@craftbyt.es"
               class="inline-flex rounded-full bg-neutral-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800"
             >
-              Work with me <span aria-hidden="true" class="ml-2">&rarr;</span>
+              Start a conversation <span aria-hidden="true" class="ml-2">&rarr;</span>
             </a>
             <a
               href="#services"
@@ -73,7 +72,7 @@ import Footer from '../components/Footer.astro';
     </div>
   </section>
 
-  <!-- Services Intro + List -->
+  <!-- Services -->
   <section id="services" class="relative overflow-hidden">
     <SectionIntro
       eyebrow="Services"
@@ -81,8 +80,8 @@ import Footer from '../components/Footer.astro';
       class="mt-24 sm:mt-32 lg:mt-40"
     >
       <p slot="children">
-        From a strategic advisory call to embedded, ongoing technical direction — I adapt
-        to what your team actually needs. No time-sheets, no bureaucracy.
+        From shaping strategy to shipping production code — every engagement is hands-on,
+        no overhead.
       </p>
     </SectionIntro>
 
@@ -102,7 +101,7 @@ import Footer from '../components/Footer.astro';
               </div>
               <h3 class="font-display text-2xl font-semibold text-neutral-950">Fractional CTO</h3>
               <p class="mt-4 text-base text-neutral-600">
-                Technical leadership for teams that don't need (or can't afford) a full-time CTO yet.
+                Strategic technical leadership for teams that need direction without the overhead of a full-time hire.
               </p>
               <ul class="mt-8 space-y-3 text-sm text-neutral-600">
                 <li class="flex gap-2">
@@ -133,7 +132,7 @@ import Footer from '../components/Footer.astro';
               </div>
               <h3 class="font-display text-2xl font-semibold text-neutral-950">Backend Architecture</h3>
               <p class="mt-4 text-base text-neutral-600">
-                Design and build the systems that scale with your product — not against it.
+                Design and build systems that scale with your product — not against it.
               </p>
               <ul class="mt-8 space-y-3 text-sm text-neutral-600">
                 <li class="flex gap-2">
@@ -155,6 +154,37 @@ import Footer from '../components/Footer.astro';
               </ul>
             </div>
 
+            <!-- Rails Modernization -->
+            <div class="fade-in group relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5 transition hover:bg-neutral-50" data-observe>
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 mb-6">
+                <svg class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+                </svg>
+              </div>
+              <h3 class="font-display text-2xl font-semibold text-neutral-950">Rails Modernization &amp; Upgrades</h3>
+              <p class="mt-4 text-base text-neutral-600">
+                Escape the upgrade treadmill. Safe, incremental modernisation of existing Rails applications.
+              </p>
+              <ul class="mt-8 space-y-3 text-sm text-neutral-600">
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Rails version upgrades (tested, safe)
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Monolith refactoring &amp; extraction
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Performance &amp; scaling improvements
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Team mentorship included
+                </li>
+              </ul>
+            </div>
+
             <!-- Platform & Infrastructure -->
             <div class="fade-in group relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5 transition hover:bg-neutral-50" data-observe>
               <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 mb-6">
@@ -164,7 +194,7 @@ import Footer from '../components/Footer.astro';
               </div>
               <h3 class="font-display text-2xl font-semibold text-neutral-950">Platform &amp; Infrastructure</h3>
               <p class="mt-4 text-base text-neutral-600">
-                Infrastructure that your team can actually ship on. Kubernetes, GitOps, and deployment pipelines.
+                Infrastructure your team can actually ship on. Kubernetes, GitOps, and deployment pipelines.
               </p>
               <ul class="mt-8 space-y-3 text-sm text-neutral-600">
                 <li class="flex gap-2">
@@ -185,51 +215,19 @@ import Footer from '../components/Footer.astro';
                 </li>
               </ul>
             </div>
-
-            <!-- Technical Due Diligence -->
-            <div class="fade-in group relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5 transition hover:bg-neutral-50" data-observe>
-              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 mb-6">
-                <svg class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
-                </svg>
-              </div>
-              <h3 class="font-display text-2xl font-semibold text-neutral-950">Technical Due Diligence</h3>
-              <p class="mt-4 text-base text-neutral-600">
-                An independent look at your codebase, architecture, and engineering practices.
-              </p>
-              <ul class="mt-8 space-y-3 text-sm text-neutral-600">
-                <li class="flex gap-2">
-                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
-                  Codebase &amp; architecture audit
-                </li>
-                <li class="flex gap-2">
-                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
-                  Technical debt assessment
-                </li>
-                <li class="flex gap-2">
-                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
-                  Security &amp; compliance review
-                </li>
-                <li class="flex gap-2">
-                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
-                  Actionable remediation roadmap
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Platform expertise section -->
+  <!-- Technologies & Expertise -->
   <section class="relative overflow-hidden mt-24 sm:mt-32 lg:mt-40">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-2xl lg:max-w-none">
         <div class="lg:flex lg:items-center lg:justify-end">
           <div class="flex justify-center lg:w-1/2 lg:justify-end lg:pr-12">
             <div class="fade-in w-135 flex-none lg:w-180" data-observe>
-              <!-- Decorative tech stack visualization -->
               <div class="relative aspect-[3/2] w-full rounded-3xl bg-neutral-950 p-8 flex flex-col justify-between overflow-hidden">
                 <div class="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent" aria-hidden="true"></div>
                 <div class="relative z-10">
@@ -241,8 +239,8 @@ import Footer from '../components/Footer.astro';
                   <div class="space-y-3 font-mono text-sm leading-relaxed">
                     <div class="flex items-center gap-2">
                       <span class="text-emerald-400">❯</span>
-                      <span class="text-neutral-400">Stack:</span>
-                      <span class="text-white font-semibold">Elixir / Phoenix / OTP</span>
+                      <span class="text-neutral-400">Backend:</span>
+                      <span class="text-white font-semibold">Ruby on Rails / Elixir / Phoenix</span>
                     </div>
                     <div class="flex items-center gap-2">
                       <span class="text-emerald-400">❯</span>
@@ -256,32 +254,38 @@ import Footer from '../components/Footer.astro';
                     </div>
                     <div class="flex items-center gap-2">
                       <span class="text-emerald-400">❯</span>
-                      <span class="text-neutral-400">Observability:</span>
-                      <span class="text-white font-semibold">OpenTelemetry / Grafana</span>
+                      <span class="text-neutral-400">Delivery:</span>
+                      <span class="text-white font-semibold">AI-assisted engineering</span>
                     </div>
                   </div>
+                  <p class="mt-6 text-xs text-neutral-500 italic leading-relaxed">
+                    AI tooling used for efficiency. Every line reviewed and owned by an experienced engineer.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
           <div class="mt-16 lg:mt-0 lg:w-1/2 lg:min-w-132 lg:pl-4">
             <h2 class="font-display text-3xl font-medium tracking-tight text-balance text-neutral-950 sm:text-4xl mb-6">
-              Full-stack platform <span class="text-accent">expertise</span>.
+              Polyglot engineering.<br />
+              <span class="text-accent">Proven delivery.</span>
             </h2>
             <p class="text-lg text-neutral-600 mb-8">
-              I've designed APIs, built real-time systems, operated production
-              infrastructure, and led engineering teams — both as a full-time
-              engineer and as a fractional technical lead.
+              Senior-level expertise across the modern backend stack — from Rails monoliths
+              to Elixir-based distributed systems. Craftbytes has designed APIs, built real-time
+              platforms, operated production Kubernetes, and led engineering teams at every stage.
             </p>
             <div class="flex flex-wrap gap-2">
+              <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700">Ruby on Rails</span>
               <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700">Elixir</span>
               <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700">Phoenix</span>
-              <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700">Erlang/OTP</span>
               <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700">Kubernetes</span>
               <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700">ArgoCD</span>
               <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700">PostgreSQL</span>
               <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700">AWS</span>
               <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700">Terraform</span>
+              <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700">LiveView</span>
+              <span class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700">Hotwire</span>
             </div>
           </div>
         </div>
@@ -289,10 +293,10 @@ import Footer from '../components/Footer.astro';
     </div>
   </section>
 
-  <!-- How I work -->
+  <!-- Our Approach -->
   <section class="relative overflow-hidden mt-24 sm:mt-32 lg:mt-40">
     <SectionIntro
-      title="How I work."
+      title="Our approach."
       class=""
     >
       <p slot="children">
@@ -307,19 +311,19 @@ import Footer from '../components/Footer.astro';
             <span class="font-display text-6xl font-semibold text-accent/20">01</span>
             <h3 class="mt-4 font-display text-xl font-semibold text-neutral-950">Understand</h3>
             <p class="mt-2 text-sm text-neutral-600">
-              We talk through where you are, where you want to be, and what's in the way.
+              We start by understanding where you are, where you want to be, and what's in the way.
             </p>
           </div>
           <div class="fade-in relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5" data-observe>
             <span class="font-display text-6xl font-semibold text-accent/20">02</span>
             <h3 class="mt-4 font-display text-xl font-semibold text-neutral-950">Plan</h3>
             <p class="mt-2 text-sm text-neutral-600">
-              A concrete plan — scope, timeline, and expected outcomes — no surprises.
+              A concrete scope, timeline, and expected outcomes — no surprises.
             </p>
           </div>
           <div class="fade-in relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5" data-observe>
             <span class="font-display text-6xl font-semibold text-accent/20">03</span>
-            <h3 class="mt-4 font-display text-xl font-semibold text-neutral-950">Execute</h3>
+            <h3 class="mt-4 font-display text-xl font-semibold text-neutral-950">Deliver</h3>
             <p class="mt-2 text-sm text-neutral-600">
               Hands-on delivery. Code, architecture, or leadership — whatever's needed.
             </p>
@@ -328,7 +332,7 @@ import Footer from '../components/Footer.astro';
             <span class="font-display text-6xl font-semibold text-accent/20">04</span>
             <h3 class="mt-4 font-display text-xl font-semibold text-neutral-950">Evolve</h3>
             <p class="mt-2 text-sm text-neutral-600">
-              We iterate. I stay as long as I'm useful — no lock-in contracts.
+              We iterate. We stay as long as we're useful — no lock-in, no friction.
             </p>
           </div>
         </div>
@@ -336,63 +340,53 @@ import Footer from '../components/Footer.astro';
     </div>
   </section>
 
-  <!-- About section -->
-  <section id="about" class="relative overflow-hidden mt-24 sm:mt-32 lg:mt-40">
-    <SectionIntro
-      title="About."
-      class=""
-    >
-      <p slot="children">
-        A backend engineer who's built and operated systems at scale.
-      </p>
-    </SectionIntro>
-
-    <div class="mx-auto max-w-7xl px-6 lg:px-8 mt-16">
+  <!-- About Craftbytes (company-focused) -->
+  <section class="relative overflow-hidden mt-24 sm:mt-32 lg:mt-40">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-2xl lg:max-w-none">
-        <div class="fade-in grid grid-cols-1 md:grid-cols-3 gap-10 items-start" data-observe>
-          <div class="md:col-span-2">
-            <p class="text-lg text-neutral-600 leading-relaxed mb-4">
-              I'm <strong class="font-semibold text-neutral-950">Raoul Diffouo</strong>, a backend engineer
-              based in Ontario, Canada. I specialise in <strong class="font-semibold text-neutral-950">Elixir &amp; Phoenix</strong>,
-              distributed systems, and platform engineering with Kubernetes and GitOps.
-            </p>
-            <p class="text-lg text-neutral-600 leading-relaxed mb-4">
-              I work remotely with teams across North America and Europe. Every engagement
-              is hands-on: I don't just advise, I build.
-            </p>
-            <p class="text-lg text-neutral-600 leading-relaxed">
-              When I'm not shipping code, I write about software architecture and
-              platform engineering at <a href="https://diraulo.dev" class="font-semibold underline underline-offset-2 decoration-neutral-300 hover:decoration-neutral-950 transition">diraulo.dev</a>.
-            </p>
-          </div>
-          <div class="rounded-3xl bg-neutral-50 p-8 ring-1 ring-neutral-950/5">
-            <h4 class="text-xs uppercase tracking-widest text-neutral-500 mb-6 font-semibold">Engagement details</h4>
-            <dl class="space-y-4 text-sm">
-              <div class="flex items-center justify-between border-b border-neutral-100 pb-4">
-                <dt class="text-neutral-500">Location</dt>
-                <dd class="text-neutral-950 font-medium">Ontario, Canada (EST)</dd>
+        <div class="fade-in" data-observe>
+          <div class="rounded-4xl bg-surface-2 py-20 sm:py-28 px-8 sm:px-12">
+            <div class="mx-auto max-w-4xl">
+              <h2 class="font-display text-3xl font-medium tracking-tight text-balance text-white sm:text-4xl text-center">
+                Built for teams that need<br class="hidden sm:inline" />
+                <span class="text-accent">expert delivery</span> without the overhead.
+              </h2>
+              <div class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3 text-center">
+                <div>
+                  <p class="font-display text-2xl font-semibold text-white">10+</p>
+                  <p class="mt-2 text-sm text-white/50">years backend engineering</p>
+                </div>
+                <div>
+                  <p class="font-display text-2xl font-semibold text-white">Elixir</p>
+                  <p class="mt-2 text-sm text-white/50">Rails · Kubernetes</p>
+                </div>
+                <div>
+                  <p class="font-display text-2xl font-semibold text-white">Global</p>
+                  <p class="mt-2 text-sm text-white/50">Remote · Ontario, Canada</p>
+                </div>
               </div>
-              <div class="flex items-center justify-between border-b border-neutral-100 pb-4">
-                <dt class="text-neutral-500">Time zones</dt>
-                <dd class="text-neutral-950 font-medium">EST • GMT ±3</dd>
-              </div>
-              <div class="flex items-center justify-between border-b border-neutral-100 pb-4">
-                <dt class="text-neutral-500">Minimum</dt>
-                <dd class="text-neutral-950 font-medium">8 hours/week</dd>
-              </div>
-              <div class="flex items-center justify-between border-b border-neutral-100 pb-4">
-                <dt class="text-neutral-500">Billing</dt>
-                <dd class="text-neutral-950 font-medium">Weekly retainer</dd>
-              </div>
-              <div class="flex items-center justify-between">
-                <dt class="text-neutral-500">Rate</dt>
-                <dd class="text-neutral-950 font-medium">From $125 CAD/hr</dd>
-              </div>
-            </dl>
+              <p class="mt-10 text-center text-white/60 text-sm max-w-2xl mx-auto leading-relaxed">
+                Craftbytes is the consulting practice of <a href="https://diraulo.dev" class="text-white underline underline-offset-2 decoration-white/20 hover:decoration-white/60 transition">Raoul Diffouo</a>, a senior backend engineer
+                with deep experience across the full software lifecycle. Based in Ontario, Canada — working with teams globally.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- Case Studies placeholder -->
+  <section class="relative overflow-hidden mt-24 sm:mt-32 lg:mt-40">
+    <SectionIntro
+      eyebrow="Case studies"
+      title="Coming soon."
+      class=""
+    >
+      <p slot="children">
+        Real projects, real outcomes. We'll share them here as we build.
+      </p>
+    </SectionIntro>
   </section>
 
   <!-- Contact CTA -->
