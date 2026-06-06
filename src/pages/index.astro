@@ -115,10 +115,6 @@ import Footer from '../components/Footer.astro';
           <div class="even:mt-px sm:bg-neutral-950">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
               <div class="grid grid-cols-1 sm:grid-cols-2">
-                <a href="#case-studies" class="nav-link group relative isolate -mx-6 bg-neutral-950 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-neutral-800 sm:even:pl-16">
-                  Case Studies
-                  <span class="absolute inset-y-0 -z-10 w-screen bg-neutral-900 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100" />
-                </a>
                 <a href="mailto:hello@craftbyt.es" class="nav-link group relative isolate -mx-6 bg-neutral-950 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-neutral-800 sm:even:pl-16">
                   Contact
                   <span class="absolute inset-y-0 -z-10 w-screen bg-neutral-900 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100" />
@@ -207,14 +203,11 @@ import Footer from '../components/Footer.astro';
           <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
             <!-- Fractional CTO -->
             <div class="fade-in group relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5 transition hover:bg-neutral-50" data-observe>
-              <div class="flex items-center gap-4 mb-6">
-                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10">
+                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 mb-6">
                   <svg class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605" />
                   </svg>
                 </div>
-                <span class="inline-flex items-center rounded-full bg-accent/10 px-3 py-0.5 text-xs font-semibold text-accent">Popular</span>
-              </div>
               <h3 class="font-display text-2xl font-semibold text-neutral-950">Fractional CTO</h3>
               <p class="mt-4 text-base text-neutral-600">
                 Strategic technical leadership for teams that need direction without the overhead of a full-time hire.
@@ -386,51 +379,6 @@ import Footer from '../components/Footer.astro';
     </div>
   </section>
 
-  <!-- About Craftbytes (company-focused) -->
-  <section class="relative overflow-hidden mt-24 sm:mt-32 lg:mt-40">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="mx-auto max-w-2xl lg:max-w-none">
-        <div class="fade-in" data-observe>
-          <div class="rounded-4xl bg-surface-2 py-20 sm:py-28 px-8 sm:px-12">
-            <div class="mx-auto max-w-4xl">
-              <h2 class="font-display text-3xl font-medium tracking-tight text-balance text-white sm:text-4xl text-center">
-                Built for teams that need<br class="hidden sm:inline" />
-                <span class="text-accent">expert delivery</span> without the overhead.
-              </h2>
-              <div class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3 text-center">
-                <div>
-                  <p class="font-display text-2xl font-semibold text-white">10+</p>
-                  <p class="mt-2 text-sm text-white/50">years backend engineering</p>
-                </div>
-                <div>
-                  <p class="font-display text-2xl font-semibold text-white">Elixir</p>
-                  <p class="mt-2 text-sm text-white/50">Rails · Kubernetes</p>
-                </div>
-                <div>
-                  <p class="font-display text-2xl font-semibold text-white">Global</p>
-                  <p class="mt-2 text-sm text-white/50">Remote · Ontario, Canada</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Case Studies placeholder -->
-  <section id="case-studies" class="relative overflow-hidden mt-24 sm:mt-32 lg:mt-40">
-    <SectionIntro
-      eyebrow="Case studies"
-      title="Coming soon."
-      class=""
-    >
-      <p slot="children">
-        Real projects, real outcomes. We'll share them here as we build.
-      </p>
-    </SectionIntro>
-  </section>
-
   <!-- Contact CTA -->
   <ContactSection>
     <span slot="title">Let's build something together.</span>
@@ -528,9 +476,25 @@ import Footer from '../components/Footer.astro';
       toggle?.addEventListener('click', openNav);
       close?.addEventListener('click', closeNav);
 
-      // Close nav when clicking a nav link
+      // Close nav when clicking a nav link — with smooth scroll
       document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', closeNav);
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          if (href && href.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            closeNav();
+            if (target) {
+              // Wait for nav close animation, then smooth scroll
+              const scrollTarget = target;
+              setTimeout(() => {
+                scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }, 400);
+            }
+          } else {
+            closeNav();
+          }
+        });
       });
 
       // Close on Escape
