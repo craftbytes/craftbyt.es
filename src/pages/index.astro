@@ -3,21 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import SectionIntro from '../components/SectionIntro.astro';
 import ContactSection from '../components/ContactSection.astro';
 import Footer from '../components/Footer.astro';
+import { GridPattern } from '../components/GridPattern.tsx';
 ---
 
 <Layout>
-  <!-- Grid pattern background -->
-  <div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
-    <svg class="h-full w-full opacity-[0.03]" aria-hidden="true">
-      <defs>
-        <pattern id="hero-grid" width="96" height="480" patternUnits="userSpaceOnUse" fill="none">
-          <path d="M128 0 98.572 147.138A16 16 0 0 1 82.883 160H13.117a16 16 0 0 0-15.69 12.862l-26.855 134.276A16 16 0 0 1-45.117 320H-116M64-160 34.572-12.862A16 16 0 0 1 18.883 0h-69.766a16 16 0 0 0-15.69 12.862l-26.855 134.276A16 16 0 0 1-109.117 160H-180M192 160l-29.428 147.138A15.999 15.999 0 0 1 146.883 320H77.117a16 16 0 0 0-15.69 12.862L34.573 467.138A16 16 0 0 1 18.883 480H-52" stroke="currentColor" fill="none"/>
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#hero-grid)" />
-    </svg>
-  </div>
-
   <!-- Header with expandable navigation -->
   <header class="relative z-50" id="site-header">
     <!-- Floating header bar (visible when nav is closed) -->
@@ -150,6 +139,13 @@ import Footer from '../components/Footer.astro';
   <!-- White content card with rounded top corners -->
   <div style="border-top-left-radius: 40px; border-top-right-radius: 40px;" class="relative flex flex-auto overflow-hidden bg-white">
     <div class="relative isolate flex w-full flex-col pt-9">
+
+      <GridPattern
+        client:load
+        className="absolute inset-x-0 -top-14 -z-10 h-[1000px] w-full [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)] fill-neutral-50 stroke-neutral-950/5"
+        yOffset={-96}
+        interactive
+      />
 
     <!-- Hero -->
     <section class="relative overflow-hidden pb-16">
