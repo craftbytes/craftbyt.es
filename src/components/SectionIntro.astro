@@ -1,0 +1,50 @@
+---
+export interface Props {
+  class?: string;
+  children?: any;
+  invert?: boolean;
+  smaller?: boolean;
+  eyebrow?: string;
+  title: string;
+}
+
+const { class: className, children, invert = false, smaller = false, eyebrow, title } = Astro.props;
+const cls = className || '';
+---
+
+<div class:list={['mx-auto max-w-7xl px-6 lg:px-8', cls]}>
+  <div class="mx-auto max-w-2xl lg:max-w-none">
+    <div class="fade-in max-w-2xl" data-observe>
+      <h2>
+        {eyebrow && (
+          <>
+            <span class:list={[
+              'mb-6 block font-display text-base font-semibold',
+              invert ? 'text-white' : 'text-neutral-950',
+            ]}>
+              {eyebrow}
+            </span>
+            <span class="sr-only"> - </span>
+          </>
+        )}
+        <span class:list={[
+          'block font-display tracking-tight text-balance',
+          smaller
+            ? 'text-2xl font-semibold'
+            : 'text-4xl font-medium sm:text-5xl',
+          invert ? 'text-white' : 'text-neutral-950',
+        ]}>
+          {title}
+        </span>
+      </h2>
+      {children && (
+        <div class:list={[
+          'mt-6 text-xl',
+          invert ? 'text-neutral-300' : 'text-neutral-600',
+        ]}>
+          <slot />
+        </div>
+      )}
+    </div>
+  </div>
+</div>

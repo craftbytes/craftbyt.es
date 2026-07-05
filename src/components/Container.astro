@@ -1,0 +1,15 @@
+---
+export interface Props {
+  class?: string;
+  children?: any;
+}
+
+const { class: className, children } = Astro.props;
+const cls = className || '';
+---
+
+<div class:list={['mx-auto max-w-7xl px-6 lg:px-8', cls]}>
+  <div class="mx-auto max-w-2xl lg:max-w-none">
+    <slot />
+  </div>
+</div>

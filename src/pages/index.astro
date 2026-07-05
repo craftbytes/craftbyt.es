@@ -1,15 +1,517 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import ContactSection from '../components/ContactSection.astro';
+import Footer from '../components/Footer.astro';
+import { GridPattern } from '../components/GridPattern.tsx';
 ---
 
-<Layout title="Coming soon...">
-  <section class="min-h-screen bg-craftbytes-blue-light flex items-center justify-center">
-    <div class="text-center">
-      <img 
-        src="/cb-logo-type.png"
-        alt="Craftbytes logo" 
-        class="max-w-lg mx-auto block"
+<Layout>
+  <!-- Header with expandable navigation -->
+  <header class="relative z-50" id="site-header">
+    <!-- Floating header bar (visible when nav is closed) -->
+    <div id="header-bar" class="absolute top-2 left-0 right-0 z-40 pt-14" aria-hidden="false">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl lg:max-w-none">
+          <div class="flex items-center justify-between">
+            <a href="/" aria-label="Home" class="flex items-center gap-2">
+              <img src="/cb-logo-type.svg" alt="Craftbytes" class="h-8" />
+            </a>
+            <div class="flex items-center gap-x-8">
+              <a
+                href="mailto:hello@craftbyt.es"
+                class="inline-flex rounded-full bg-neutral-950 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-neutral-800"
+              >
+                Contact
+              </a>
+              <button
+                type="button"
+                id="nav-toggle"
+                class="group -m-2.5 rounded-full p-2.5 transition hover:bg-neutral-950/10"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+                aria-controls="nav-panel"
+              >
+                <!-- Hamburger icon (visible when closed) -->
+                <svg id="hamburger-icon" class="h-6 w-6 fill-neutral-950 group-hover:fill-neutral-700" viewBox="0 0 24 24" stroke="none">
+                  <path d="M2 6h20v2H2zM2 16h20v2H2z" />
+                </svg>
+                <!-- X icon (visible when open) -->
+                <svg id="close-icon" class="h-6 w-6 fill-neutral-950 group-hover:fill-neutral-700" viewBox="0 0 24 24" stroke="none" style="display: none;">
+                  <path d="m5.636 4.223 14.142 14.142-1.414 1.414L4.222 5.637z" />
+                  <path d="M4.222 18.363 18.364 4.22l1.414 1.414L5.636 19.777z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expandable navigation panel (in flow — pushes content down) -->
+    <div
+      id="nav-panel"
+      class="relative z-50 overflow-hidden bg-neutral-950"
+      style="height: 0.5rem"
+      aria-hidden="true"
+    >
+      <div class="bg-neutral-800">
+        <div class="bg-neutral-950 pt-14 pb-16">
+          <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl lg:max-w-none">
+              <div class="flex items-center justify-between">
+                <a href="/" aria-label="Home" class="flex items-center gap-2">
+                  <img src="/cb-logo-type.svg" alt="Craftbytes" class="h-8 invert brightness-0" />
+                </a>
+                <div class="flex items-center gap-x-8">
+                  <a
+                    href="mailto:hello@craftbyt.es"
+                    class="inline-flex rounded-full border border-white/20 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-white/10"
+                  >
+                    Contact
+                  </a>
+                  <button
+                    type="button"
+                    id="nav-close"
+                    class="group -m-2.5 rounded-full p-2.5 transition hover:bg-white/10"
+                    aria-label="Close navigation"
+                  >
+                    <svg class="h-6 w-6 fill-white group-hover:fill-neutral-200" viewBox="0 0 24 24" stroke="none">
+                      <path d="m5.636 4.223 14.142 14.142-1.414 1.414L4.222 5.637z" />
+                      <path d="M4.222 18.363 18.364 4.22l1.414 1.414L5.636 19.777z" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <nav class="mt-px font-display text-5xl font-medium tracking-tight text-white">
+          <div class="even:mt-px sm:bg-neutral-950">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+              <div class="grid grid-cols-1 sm:grid-cols-2">
+                <a href="#services" class="nav-link group relative isolate -mx-6 bg-neutral-950 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-neutral-800 sm:even:pl-16">
+                  Services
+                  <span class="absolute inset-y-0 -z-10 w-screen bg-neutral-900 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100" />
+                </a>
+                <a href="#approach" class="nav-link group relative isolate -mx-6 bg-neutral-950 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-neutral-800 sm:even:pl-16">
+                  Our Approach
+                  <span class="absolute inset-y-0 -z-10 w-screen bg-neutral-900 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100" />
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="even:mt-px sm:bg-neutral-950">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+              <div class="grid grid-cols-1 sm:grid-cols-2">
+                <a href="mailto:hello@craftbyt.es" class="nav-link group relative isolate -mx-6 bg-neutral-950 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-neutral-800 sm:even:pl-16">
+                  Contact
+                  <span class="absolute inset-y-0 -z-10 w-screen bg-neutral-900 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div class="relative bg-neutral-950 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-neutral-800">
+          <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl lg:max-w-none">
+              <div class="grid grid-cols-1 gap-y-10 pt-10 pb-16 sm:grid-cols-2 sm:pt-16">
+                <div>
+                  <h2 class="font-display text-base font-semibold text-white">Connect</h2>
+                  <ul class="mt-6 space-y-2 text-sm text-neutral-400">
+                    <li><a href="https://github.com/craftbytes" class="transition hover:text-white">GitHub</a></li>
+                    <li><a href="https://linkedin.com/in/diraul" class="transition hover:text-white">LinkedIn</a></li>
+                  </ul>
+                </div>
+                <div class="sm:border-l sm:border-transparent sm:pl-16">
+                  <h2 class="font-display text-base font-semibold text-white">Based in</h2>
+                  <p class="mt-3 text-sm text-neutral-400">Ontario, Canada</p>
+                  <p class="mt-1 text-sm text-neutral-500">Working with teams globally</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- White content card with rounded top corners -->
+  <div style="border-top-left-radius: 40px; border-top-right-radius: 40px;" class="relative flex flex-auto overflow-hidden bg-white">
+    <div class="relative isolate flex w-full flex-col pt-9">
+
+      <GridPattern
+        client:load
+        className="absolute inset-x-0 -top-14 -z-10 h-[1000px] w-full [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)] fill-neutral-50 stroke-neutral-950/5"
+        yOffset={-96}
+        interactive
       />
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden pb-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 mt-24 sm:mt-32 md:mt-56">
+      <div class="mx-auto max-w-2xl lg:max-w-none">
+        <div class="fade-in max-w-3xl" data-observe>
+          <h1 class="font-display text-5xl font-medium tracking-tight text-balance text-neutral-950 sm:text-7xl">
+            You need someone who builds —<br />
+            <span class="text-accent">not just advises.</span>
+          </h1>
+          <p class="mt-6 text-xl text-neutral-600 max-w-2xl">
+            With craftbytes you get direct access to a senior backend engineer
+            who'll write the code, design the architecture, and tell you when the shiny new tool
+            is the wrong choice.
+          </p>
+          <div class="mt-10 flex gap-4 flex-wrap">
+            <a
+              href="mailto:hello@craftbyt.es"
+              class="inline-flex rounded-full bg-neutral-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800"
+            >
+              Start a conversation <span aria-hidden="true" class="ml-2">&rarr;</span>
+            </a>
+            <a
+              href="#services"
+              class="inline-flex rounded-full bg-neutral-100 px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:bg-neutral-200"
+            >
+              View services
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- Services -->
+  <section id="services" class="relative overflow-hidden">
+    <SectionIntro
+      eyebrow="Services"
+      title="Here's what that looks like in practice."
+      class="mt-24 sm:mt-32 lg:mt-40"
+    >
+    </SectionIntro>
+
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 mt-16">
+      <div class="mx-auto max-w-2xl lg:max-w-none">
+        <div data-observe-stagger class="fade-in-stagger">
+          <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <!-- Fractional CTO -->
+            <div class="fade-in group relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5 transition hover:bg-neutral-50" data-observe>
+                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 mb-6">
+                  <svg class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605" />
+                  </svg>
+                </div>
+              <h3 class="font-display text-2xl font-semibold text-neutral-950">Fractional CTO</h3>
+              <p class="mt-4 text-base text-neutral-600">
+                You're making architecture calls by committee because there's no senior engineer in the room. Or you're a non-technical founder who needs someone to own the technical direction — not just weigh in on it.
+              </p>
+              <ul class="mt-8 space-y-3 text-sm text-neutral-600">
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Turning "we need to scale" into a concrete technical plan
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Writing job specs, running technical interviews, onboarding engineers who'll stay
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Making the calls your team's been avoiding — ADRs, system design, code reviews
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  8–20 hours/week, flexible
+                </li>
+              </ul>
+            </div>
+
+            <!-- Backend Architecture -->
+            <div class="fade-in group relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5 transition hover:bg-neutral-50" data-observe>
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 mb-6">
+                <svg class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z" />
+                </svg>
+              </div>
+              <h3 class="font-display text-2xl font-semibold text-neutral-950">Backend Architecture</h3>
+              <p class="mt-4 text-base text-neutral-600">
+                The architecture decision you make in month three determines what you can ship in year two. Get it right and the system disappears. Get it wrong and you're rebuilding instead of building.
+              </p>
+              <ul class="mt-8 space-y-3 text-sm text-neutral-600">
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Greenfield Elixir/Phoenix — real-time, concurrent, fault-tolerant
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  REST and GraphQL APIs, WebSocket / LiveView, pub/sub systems
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Event sourcing, message queues, background job architecture
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Query optimization, N+1 fixes, caching — with numbers, not guesses
+                </li>
+              </ul>
+            </div>
+
+            <!-- Rails Modernization -->
+            <div class="fade-in group relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5 transition hover:bg-neutral-50" data-observe>
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 mb-6">
+                <svg class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+                </svg>
+              </div>
+              <h3 class="font-display text-2xl font-semibold text-neutral-950">Rails Modernization &amp; Upgrades</h3>
+              <p class="mt-4 text-base text-neutral-600">
+                Escape the upgrade treadmill. That codebase everyone's afraid to touch — I've modernized ones exactly like it without breaking what's keeping the business running.
+              </p>
+              <ul class="mt-8 space-y-3 text-sm text-neutral-600">
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Step-by-step version upgrades — full test suite before and after
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Pulling services out without breaking production, or telling you why you shouldn't yet
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Database tuning, background job architecture, finding the actual bottleneck
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Your engineers learn while we work — it's part of how I engage
+                </li>
+              </ul>
+            </div>
+
+            <!-- Platform & Infrastructure -->
+            <div class="fade-in group relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5 transition hover:bg-neutral-50" data-observe>
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 mb-6">
+                <svg class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-3.758-3.848 5.25 5.25 0 0 0-10.233 2.33A4.502 4.502 0 0 0 2.25 15Z" />
+                </svg>
+              </div>
+              <h3 class="font-display text-2xl font-semibold text-neutral-950">Platform &amp; Infrastructure</h3>
+              <p class="mt-4 text-base text-neutral-600">
+                Your deployment story shouldn't be the reason features are slow to ship. I'll figure out what infrastructure your team actually needs — and build it so it gets out of their way.
+              </p>
+              <ul class="mt-8 space-y-3 text-sm text-neutral-600">
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Deployment infrastructure scaled to where you actually are — not where you might be in three years
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  GitOps workflows when you're ready for them
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  CI/CD pipelines that don't take 20 minutes or break on Fridays
+                </li>
+                <li class="flex gap-2">
+                  <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                  Logs, metrics, traces, and alerts — so you know before your users do
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Our Approach -->
+  <section id="approach" class="relative overflow-hidden mt-24 sm:mt-32 lg:mt-40">
+    <SectionIntro
+      title="How it works."
+      class=""
+    >
+    </SectionIntro>
+
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 mt-16">
+      <div class="mx-auto max-w-2xl lg:max-w-none">
+        <div data-observe-stagger class="fade-in-stagger grid grid-cols-1 gap-8 lg:grid-cols-4">
+          <div class="fade-in relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5" data-observe>
+            <span class="font-display text-6xl font-semibold text-accent/20">01</span>
+            <h3 class="mt-4 font-display text-xl font-semibold text-neutral-950">Honest assessment</h3>
+            <p class="mt-2 text-sm text-neutral-600">
+              The first call is free. I'll ask about your stack, your team, and what's blocking you. If I don't think I can help, I'll say so.
+            </p>
+          </div>
+          <div class="fade-in relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5" data-observe>
+            <span class="font-display text-6xl font-semibold text-accent/20">02</span>
+            <h3 class="mt-4 font-display text-xl font-semibold text-neutral-950">Clear scope</h3>
+            <p class="mt-2 text-sm text-neutral-600">
+              If we're a good fit, you get a specific scope and timeline — not a discovery phase that costs money to tell you I need more time.
+            </p>
+          </div>
+          <div class="fade-in relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5" data-observe>
+            <span class="font-display text-6xl font-semibold text-accent/20">03</span>
+            <h3 class="mt-4 font-display text-xl font-semibold text-neutral-950">Real work</h3>
+            <p class="mt-2 text-sm text-neutral-600">
+              You'll see commits, not just recommendations. I work in the code — or alongside your team, depending on what's needed.
+            </p>
+          </div>
+          <div class="fade-in relative flex flex-col rounded-3xl p-8 ring-1 ring-neutral-950/5" data-observe>
+            <span class="font-display text-6xl font-semibold text-accent/20">04</span>
+            <h3 class="mt-4 font-display text-xl font-semibold text-neutral-950">No lock-in</h3>
+            <p class="mt-2 text-sm text-neutral-600">
+              I'll tell you when the engagement should end. I'm not here to pad a retainer.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <ContactSection>
+    <span slot="title">Tell me what you're building.</span>
+    <span slot="cta">
+      <a
+        href="mailto:hello@craftbyt.es"
+        class="inline-flex rounded-full bg-white px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:bg-neutral-200"
+      >
+        hello@craftbyt.es <span aria-hidden="true" class="ml-2">&rarr;</span>
+      </a>
+    </span>
+    <div slot="details">
+      <p class="text-sm text-white/60">
+        Send a paragraph about where you're stuck. No intake form — just a direct email.
+      </p>
+    </div>
+  </ContactSection>
+
+  <Footer />
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Navigation menu toggle
+      const toggle = document.getElementById('nav-toggle');
+      const close = document.getElementById('nav-close');
+      const panel = document.getElementById('nav-panel');
+      const headerBar = document.getElementById('header-bar');
+      const hamburger = document.getElementById('hamburger-icon');
+      const closeIcon = document.getElementById('close-icon');
+      let isOpen = false;
+      let isAnimating = false;
+
+      function openNav() {
+        if (isAnimating || isOpen) return;
+        isAnimating = true;
+        isOpen = true;
+
+        // Show the panel first so we can measure it
+        panel.style.height = 'auto';
+        panel.removeAttribute('aria-hidden');
+        const targetHeight = panel.scrollHeight;
+
+        // Reset to closed height and animate
+        panel.style.height = '0.5rem';
+        // Force layout calc
+        panel.getBoundingClientRect();
+        // Apply transition and animate
+        panel.style.transition = 'height 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+        panel.style.height = targetHeight + 'px';
+
+        headerBar?.setAttribute('aria-hidden', 'true');
+        toggle?.setAttribute('aria-expanded', 'true');
+        hamburger?.style.setProperty('display', 'none');
+        closeIcon?.style.removeProperty('display');
+        document.body.style.overflow = 'hidden';
+
+        panel.addEventListener('transitionend', function onEnd() {
+          panel.style.height = 'auto';
+          panel.removeEventListener('transitionend', onEnd);
+          isAnimating = false;
+        });
+      }
+
+      function closeNav() {
+        if (isAnimating || !isOpen) return;
+        isAnimating = true;
+        isOpen = false;
+
+        // Measure current height and animate to closed
+        const currentHeight = panel.scrollHeight;
+        panel.style.height = currentHeight + 'px';
+        panel.getBoundingClientRect();
+        panel.style.transition = 'height 0.4s cubic-bezier(0.22, 1, 0.36, 1)';
+        panel.style.height = '0.5rem';
+
+        headerBar?.setAttribute('aria-hidden', 'false');
+        toggle?.setAttribute('aria-expanded', 'false');
+        hamburger?.style.removeProperty('display');
+        closeIcon?.style.setProperty('display', 'none');
+        document.body.style.overflow = '';
+
+        panel.addEventListener('transitionend', function onEnd() {
+          panel.setAttribute('aria-hidden', 'true');
+          panel.style.transition = '';
+          panel.removeEventListener('transitionend', onEnd);
+          isAnimating = false;
+        });
+      }
+
+      toggle?.addEventListener('click', openNav);
+      close?.addEventListener('click', closeNav);
+
+      // Close nav when clicking a nav link — with smooth scroll
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          if (href && href.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            closeNav();
+            if (target) {
+              // Wait for nav close animation, then smooth scroll
+              const scrollTarget = target;
+              setTimeout(() => {
+                scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }, 400);
+            }
+          } else {
+            closeNav();
+          }
+        });
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isOpen) closeNav();
+      });
+
+      // Scroll animation observer
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target;
+              if (el.dataset.observeStagger !== undefined) {
+                el.querySelectorAll('.fade-in').forEach((child, i) => {
+                  child.style.transitionDelay = `${i * 120}ms`;
+                  child.classList.add('visible');
+                });
+              } else {
+                el.classList.add('visible');
+              }
+              observer.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -100px' }
+      );
+
+      document.querySelectorAll('[data-observe], [data-observe-stagger]').forEach((el) => {
+        observer.observe(el);
+      });
+    });
+  </script>
 </Layout>
